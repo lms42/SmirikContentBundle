@@ -1,0 +1,36 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ category.title }} / Информатика 2.0{% endblock %}
+
+{% block header %}
+<h1>{{ category.title }} <small>категория</small></h1>
+{% endblock %}
+
+{% block body %}
+
+  <table class="table table-striped table-bordered">
+  <tr>
+    <th>#</th>
+    <th>Название</th>
+    <th>Описание</th>
+    <th>Ссылка</th>
+    {% for item in content %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td><a href="{{ path('content_show', { 'id': item.id }) }}">{{ item.title }}</a></td>
+        <td>{{ item.description }}</td>
+        <td>
+          {% if (item.file|length > 0) and not(item.hasImage)  %}
+          <a href="{{ asset('uploads/pages/' ~ item.file) }}">Скачать</a>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+  
+  <div id="vk_comments"></div>
+  <script type="text/javascript">
+  VK.Widgets.Comments("vk_comments", {limit: 15});
+  </script>
+  
+{% endblock %}

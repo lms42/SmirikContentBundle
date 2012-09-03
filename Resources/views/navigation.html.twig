@@ -1,0 +1,9 @@
+{% block navigation %}
+  <ul class="nav">
+    {% for category in categories %}
+      <li><a href="{{ path('category_show' , { 'urlkey': category.urlkey }) }}">{{ category.title }}</a></li>
+    {% endfor %}
+    <li><a href="{{ path('smirik_quiz_index') }}">{{ 'Quiz'|trans }}</a></li>
+    <li><a href="{{ path('course_index') }}">{{ 'Courses'|trans }}</a></li>
+  </ul>
+{% endblock %}

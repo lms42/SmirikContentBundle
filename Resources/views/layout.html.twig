@@ -1,0 +1,8 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+{% stylesheets output='css/*.css' debug=false 'bundles/smirikcontent/css/main.css' %}
+<link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+{% endstylesheets %}
+{% endblock %}
+

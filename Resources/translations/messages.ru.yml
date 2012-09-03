@@ -1,0 +1,62 @@
+parent: Родитель
+Navigation: В навигации
+Category: Категория
+content: контент
+category: категория
+categories: категории
+Parent: Родитель
+
+# menu
+admin.category.menu: Категории
+admin.content.menu:  Контент
+
+# Tables
+admin.category.table.header.id:         N
+admin.category.table.header.pid:        Родитель
+admin.category.table.header.title:      Название
+admin.category.table.header.navigation: В навигации
+admin.category.table.header.isactive:   Активна
+admin.category.actions: Действия
+
+admin.category.action.edit:   Изменить
+admin.category.action.create: Создать
+admin.category.action.delete: Удалить
+admin.category.action.save:   Сохранить
+
+admin.category.index.page_title: Список категорий
+admin.category.index.title: Категории
+admin.category.index.title.comment: Список
+
+admin.content.table.header.id:         N
+admin.content.table.header.categoryid: Категория
+admin.content.table.header.title:      Название
+admin.content.table.header.isactive:   Активен
+admin.content.table.header.createdat:  Создан
+admin.content.actions: Действия
+
+admin.content.action.edit:   Изменить
+admin.content.action.create: Создать
+admin.content.action.delete: Удалить
+admin.content.action.save:   Сохранить
+
+admin.content.index.page_title: Список контента
+admin.content.index.title: Контент
+admin.content.index.title.comment: Список
+
+admin.category.action.back: Назад
+admin.content.action.back: Назад
+
+# Create
+admin.category.new.title: Категория
+admin.category.new.title.comment: создание
+admin.category.new.page_title: Создать категорию
+
+admin.category.new.page_title: Редактирование категории
+admin.category.edit.title.comment: редактирование
+
+admin.content.new.title: Контент
+admin.content.new.title.comment: создание
+admin.content.new.page_title: Создать контент
+
+admin.content.edit.page_title: Редактирование контента
+admin.content.edit.title.comment: редактирование

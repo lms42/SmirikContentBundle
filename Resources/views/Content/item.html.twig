@@ -1,0 +1,9 @@
+<div class="item">
+  <h3><a href="{{ path('content_show', { 'id': item.id }) }}">{{ item.title }}</a></h3>
+  <p>
+    {{ item.description | raw }}
+  </p>
+  <div class="category">
+    создан {{ item.createdAt.format('d.m.Y') }}
+  </div>
+</div>  

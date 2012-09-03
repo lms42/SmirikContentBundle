@@ -1,0 +1,36 @@
+<database name="default" namespace="Smirik\ContentBundle\Model" defaultIdMethod="native">
+  <table name="categories" phpName="Category" idMethod="native">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="pid" type="INTEGER" required="false"/>
+    <column name="urlkey" type="VARCHAR" size="100" required="true"/>
+    <column name="title" type="VARCHAR" size="100" required="true"/>
+    <column name="url" type="VARCHAR" size="200" required="false"/>
+    <column name="navigation" type="BOOLEAN" size="1" required="false"/>
+    <column name="is_active" type="BOOLEAN" size="1" required="false"/>
+    <column name="mode" type="BOOLEAN" size="1" required="false"/>
+    <foreign-key foreignTable="categories">
+      <reference local="pid" foreign="id"/>
+    </foreign-key>
+    <index>
+      <index-column name="pid"/>
+    </index>
+  </table>
+  <table name="content" phpName="Content" idMethod="native">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="category_id" type="INTEGER" required="true"/>
+    <column name="title" type="VARCHAR" size="100" required="true"/>
+    <column name="description" type="VARCHAR" size="255" required="false"/>
+    <column name="text" type="CLOB" required="true"/>
+    <column name="urlkey" type="VARCHAR" size="50" required="false"/>
+    <column name="is_active" type="BOOLEAN" size="1" required="false"/>
+    <column name="weight" type="INTEGER" required="false"/>
+    <column name="file" type="VARCHAR" size="200" required="false"/>
+    <foreign-key foreignTable="categories">
+      <reference local="category_id" foreign="id"/>
+    </foreign-key>
+    <behavior name="timestampable" />
+    <index>
+      <index-column name="category_id"/>
+    </index>
+  </table>
+</database>

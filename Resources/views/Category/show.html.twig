@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ category.title }} / Информатика 2.0{% endblock %}
+
+{% block header %}
+<h1>{{ category.title }} <small>категория</small></h1>
+{% endblock %}
+
+{% block body %}
+
+  <ul class="unstyled">
+  {% for item in content %}
+    <li class="content">
+      {% include 'SmirikContentBundle:Content:item.html.twig' with {'item': item} %}
+    </li>
+  {% endfor %}
+  </ul>
+  
+{% endblock %}

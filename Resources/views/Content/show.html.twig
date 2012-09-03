@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{content.title}} / {{ content.category.title }} / Информатика 2.0{% endblock %}
+
+{% block header %}
+<h1>{{ content.title }} <small>{{ content.category.title }}</small></h1>
+{% endblock %}
+
+
+{% block body %}
+
+  <div class="item-image">
+    {% if content.hasImage %}
+      <img src="{{ asset('uploads/pages/' ~ content.file) }}" width="200" class="thumb">
+    {% endif %}
+  </div>
+
+  <div class="description">
+    {{ content.description | raw }}
+  </div>
+  <p>
+    {{ content.text | raw }}
+  </p>
+  
+  {% if (content.file|length > 0) and not(content.hasImage)  %}
+  <p>
+    <a href="{{ asset('uploads/pages/' ~ content.file) }}" title="{{ content.title }}">Скачать презентацию {{ content.title }}</a>
+  </p>
+  {% endif %}
+  
+  <div class="category">
+    создан {{ content.createdAt.format('d.m.Y') }}
+  </div>
+  
+  <div id="vk_comments"></div>
+  <script type="text/javascript">
+  VK.Widgets.Comments("vk_comments", {limit: 15});
+  </script>
+  
+{% endblock %}
