@@ -1,5 +1,6 @@
 services:
-  category.configure_menu_listener:
-      class: Smirik\ContentBundle\Listener\ConfigureMenuListener
-      tags:
-        - { name: kernel.event_listener, event: smirik_admin.menu_configure, method: onMenuConfigure }
+    category.configure_menu_listener:
+        class: Smirik\ContentBundle\Listener\ConfigureMenuListener
+        tags:
+            - { name: kernel.event_listener, event: admin.menu_configure, method: onMenuConfigure }
+            - { name: kernel.event_listener, event: main.menu_configure, method: onMainMenuConfigure }
