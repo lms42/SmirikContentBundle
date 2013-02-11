@@ -1,0 +1,57 @@
+{% block navbar %}
+
+    <div class="navbar navbar-fixed-top navbar-inverse">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="{{ path('homepage') }}">Главная</a>
+
+                <ul class="nav">
+                    {% set menuItem = knp_menu_get('SmirikAdminBundle:Builder:main') %}
+                    {% for item in menuItem %}
+                        {% if item.hasChildren %}
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    {{ item.label|trans|raw }}
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% for iitem in item %}
+                                        <li><a href="{{ iitem.uri }}">{{ iitem.label|trans }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% else %}
+                            {% if item.isCurrent %}
+                                <li class="active"><a href="{{ item.uri }}">{{ item.label|trans|raw }}</a></li>
+                            {% else %}
+                                <li><a href="{{ item.uri }}">{{ item.label|trans|raw }}</a></li>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+
+                <p class="navbar-text pull-right">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        {% if is_granted("ROLE_ADMIN") %}
+                            <a href="{{ path('admin_main') }}">Администрирование</a> |
+                        {% endif %}
+                        <a href="{{ path('fos_user_profile_show') }}">
+                            {{ app.user.username }}</a> |
+                        <a href="{{ path('fos_user_security_logout') }}">
+                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                        </a>
+                    {% else %}
+                        <a href="#signin_modal" role="button" class="" data-toggle="modal">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                        {% if false %}
+                            <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                        {% endif %}
+                    {% endif %}
+
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Button to trigger modal -->
+    {% include 'SmirikContentBundle:Default:_login.html.twig' %}
+{% endblock %}
