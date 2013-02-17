@@ -63,7 +63,7 @@ class ContentController extends Controller
      */
     public function navigationAction()
     {
-        $user = $this->get('security.context')->getToken()->getUser();
+        $user = $this->getUser();
         $categories = CategoryQuery::create()->filterByNavigation(true)->find();
 
         $courses = false;
@@ -87,45 +87,46 @@ class ContentController extends Controller
      */
     public function sidebarAction()
     {
-        $cm = $this->get('course.manager');
-        $user = $this->get('security.context')->getToken()->getUser();
-        $courses_ids = array();
-
-        if (is_object($user)) {
-            $courses_ids = CourseQuery::create()
-                ->select('Id')
-                ->useUserCourseQuery()
-                ->filterByUserId($user->getId())
-                ->endUse()
-                ->find()
-                ->toArray();
-        }
-
-        $last_lessons = array();
-        foreach ($courses_ids as $id) {
-            $user_lesson = UserLessonQuery::create()
-                ->filterByUserId($user->getId())
-                ->filterByCourseId($id)
-                ->joinLesson()
-                ->joinCourse()
-                ->orderByStartedAt('desc')
-                ->findOne();
-            if ($user_lesson) {
-                $last_lessons[] = $user_lesson;
-            }
-        }
-
-        $content = ContentQuery::create()
-            ->useCategoryQuery()
-            ->filterByUrlkey('keynote')
-            ->endUse()
-            ->limit(3)
-            ->find();
-
-        return array(
-            'content' => $content,
-            'last_lessons' => $last_lessons,
-        );
+        // $cm = $this->get('course.manager');
+        // $user = $this->getUser();
+        // $courses_ids = array();
+        // 
+        // if (is_object($user)) {
+        //     $courses_ids = CourseQuery::create()
+        //         ->select('Id')
+        //         ->useUserCourseQuery()
+        //         ->filterByUserId($user->getId())
+        //         ->endUse()
+        //         ->find()
+        //         ->toArray();
+        // }
+        // 
+        // $last_lessons = array();
+        // foreach ($courses_ids as $id) {
+        //     $user_lesson = UserLessonQuery::create()
+        //         ->filterByUserId($user->getId())
+        //         ->filterByCourseId($id)
+        //         ->joinLesson()
+        //         ->joinCourse()
+        //         ->orderByStartedAt('desc')
+        //         ->findOne();
+        //     if ($user_lesson) {
+        //         $last_lessons[] = $user_lesson;
+        //     }
+        // }
+        // 
+        // $content = ContentQuery::create()
+        //     ->useCategoryQuery()
+        //     ->filterByUrlkey('keynote')
+        //     ->endUse()
+        //     ->limit(3)
+        //     ->find();
+        // 
+        // return array(
+        //     'content' => $content,
+        //     'last_lessons' => $last_lessons,
+        // );
+        return array();
 
     }
 

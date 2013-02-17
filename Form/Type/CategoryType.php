@@ -7,31 +7,32 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class CategoryType extends AbstractType
 {
-  
-  public function buildForm(FormBuilderInterface $builder, array $options)
-  {
-    $builder
-			->add('parent', 'model', array(
-					    	'class' => 'Smirik\ContentBundle\Model\Category',
-					    ))
-      ->add('title')
-      ->add('navigation')
-      ->add('is_active')
-      ->add('urlkey')
-    ;
-  }
 
-  public function getDefaultOptions(array $options)
-  {
-    return array(
-      'data_class' => 'Smirik\ContentBundle\Model\Category',
-    );
-  }
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('parent', 'model', array(
+                'class'    => 'Smirik\ContentBundle\Model\Category',
+                'multiple' => false,
+                'required' => false,
+            ))
+            ->add('title')
+            ->add('urlkey')
+            ->add('navigation')
+            ->add('is_active');
+    }
 
-  public function getName()
-  {
-    return 'Category';
-  }
-  
+    public function getDefaultOptions(array $options)
+    {
+        return array(
+            'data_class' => 'Smirik\ContentBundle\Model\Category',
+        );
+    }
+
+    public function getName()
+    {
+        return 'Category';
+    }
+
 }
 

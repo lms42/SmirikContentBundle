@@ -1,0 +1,91 @@
+columns:
+    id:
+        label: Id
+        name: id
+        type: integer
+        builder: simple
+        options:
+            listable: true
+            editable: false
+            sortable: true
+            filterable: true
+    category:
+        label: Category
+        name: category
+        type: string
+        builder: simple
+        options:
+            listable: true
+            editable: true
+            sortable: true
+            filterable: true
+    title:
+        label: Title
+        name: title
+        type: string
+        builder: simple
+        options:
+            listable: true
+            editable: true
+            sortable: true
+            filterable: true
+    description:
+        label: Description
+        name: description
+        type: text
+        builder: simple
+        options:
+            listable: false
+            editable: true
+            sortable: true
+            filterable: true
+    text:
+        label: Text
+        name: text
+        type: text
+        builder: simple
+        options:
+            listable: false
+            editable: true
+            sortable: true
+            filterable: true
+    urlkey:
+        label: Urlkey
+        name: urlkey
+        type: string
+        builder: simple
+        options:
+            listable: true
+            editable: true
+            sortable: true
+            filterable: true
+    is_active:
+        label: Is_active
+        name: is_active
+        type: boolean
+        builder: simple
+        options:
+            listable: true
+            editable: true
+            sortable: true
+            filterable: true
+    weight:
+        label: Weight
+        name: weight
+        type: integer
+        builder: simple
+        options:
+            listable: false
+            editable: true
+            sortable: true
+            filterable: true
+actions:
+    create:
+        route: admin_content_new
+        template: create
+    edit:
+        route: admin_content_edit
+        template: edit
+    delete:
+        route: admin_content_delete
+        template: delete

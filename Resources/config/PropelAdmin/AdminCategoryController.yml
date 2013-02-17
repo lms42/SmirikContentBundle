@@ -1,0 +1,71 @@
+columns:
+    id:
+        label: Id
+        name: id
+        type: integer
+        builder: simple
+        options:
+            listable: true
+            editable: false
+            sortable: true
+            filterable: true
+    parent:
+        label: Parent
+        name: parent
+        type: string
+        builder: simple
+        options:
+            listable: true
+            editable: true
+            sortable: true
+            filterable: true
+    title:
+        label: Title
+        name: title
+        type: string
+        builder: simple
+        options:
+            listable: true
+            editable: true
+            sortable: true
+            filterable: true
+    urlkey:
+        label: Urlkey
+        name: urlkey
+        type: string
+        builder: simple
+        options:
+            listable: true
+            editable: true
+            sortable: true
+            filterable: true
+    navigation:
+        label: Navigation
+        name: navigation
+        type: integer
+        builder: simple
+        options:
+            listable: true
+            editable: true
+            sortable: true
+            filterable: true
+    is_active:
+        label: Is_active
+        name: is_active
+        type: boolean
+        builder: simple
+        options:
+            listable: true
+            editable: true
+            sortable: true
+            filterable: true
+actions:
+    create:
+        route: admin_categories_new
+        template: create
+    edit:
+        route: admin_categories_edit
+        template: edit
+    delete:
+        route: admin_categories_delete
+        template: delete
