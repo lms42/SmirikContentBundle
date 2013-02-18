@@ -42,7 +42,7 @@ columns:
     navigation:
         label: Navigation
         name: navigation
-        type: integer
+        type: boolean
         builder: simple
         options:
             listable: true
@@ -62,10 +62,10 @@ columns:
 actions:
     create:
         route: admin_categories_new
-        template: create
+        extends: create
     edit:
         route: admin_categories_edit
-        template: edit
+        extends: edit
     delete:
         route: admin_categories_delete
-        template: delete
+        extends: delete

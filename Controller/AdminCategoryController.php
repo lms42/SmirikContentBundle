@@ -2,33 +2,12 @@
 
 namespace Smirik\ContentBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Smirik\PropelAdminBundle\Controller\AdminAbstractController as AbstractController;
+use Smirik\ContentBundle\Controller\Base\AdminCategoryController as BaseController;
 
-class AdminCategoryController extends AbstractController
+class AdminCategoryController extends BaseController
 {
-	
-	public $layout = 'SmirikAdminBundle::layout.html.twig';
-	public $name   = 'categories';
-	public $bundle = 'SmirikContentBundle';
-
-	public function getQuery()
-	{
-		return \Smirik\ContentBundle\Model\CategoryQuery::create();
-	}
-	
-	public function getForm()
-	{
-		return new \Smirik\ContentBundle\Form\Type\CategoryType;
-	}
-	
-	public function getObject()
-	{
-		return new \Smirik\ContentBundle\Model\Category;
-	}
-
 }
 

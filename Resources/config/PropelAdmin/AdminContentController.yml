@@ -82,10 +82,10 @@ columns:
 actions:
     create:
         route: admin_content_new
-        template: create
+        extends: create
     edit:
         route: admin_content_edit
-        template: edit
+        extends: edit
     delete:
         route: admin_content_delete
-        template: delete
+        extends: delete
