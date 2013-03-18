@@ -60,6 +60,9 @@ columns:
             sortable: true
             filterable: true
 actions:
+    is_active:
+        route:   admin_categories_enable
+        extends: is_active
     create:
         route: admin_categories_new
         extends: create

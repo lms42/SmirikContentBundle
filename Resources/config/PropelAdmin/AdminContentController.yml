@@ -80,6 +80,9 @@ columns:
             sortable: true
             filterable: true
 actions:
+    is_active:
+        route:   admin_content_enable
+        extends: is_active
     create:
         route: admin_content_new
         extends: create

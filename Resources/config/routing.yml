@@ -6,6 +6,10 @@ admin_main:
   pattern: /categories
   defaults: { _controller: SmirikContentBundle:AdminCategory:index, page: 1 }
 
+admin_categories_enable:
+  pattern: /categories/enable
+  defaults: { _controller: SmirikContentBundle:AdminCategory:enable }
+
 admin_categories_list:
   pattern: /categories/{page}
   defaults: { _controller: SmirikContentBundle:AdminCategory:index, page: 1 }
@@ -53,3 +57,7 @@ admin_content_delete:
 admin_content_new:
   pattern: /content/new
   defaults: { _controller: SmirikContentBundle:AdminContent:new }
+
+admin_content_enable:
+  pattern: /content/enable
+  defaults: { _controller: SmirikContentBundle:AdminContent:enable }
