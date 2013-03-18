@@ -1,0 +1,25 @@
+{% set courses = courses_list() %}
+{% set route = app.request.get('_route')%}
+<ul class="nav nav-list well">
+  <li class="nav-header">Мои курсы</li>
+  <li{% if route == 'homepage' %} class="active"{% endif %}><a href="{{ path('homepage') }}">Главная</a></li>
+  {% if courses|length %}
+      <li{% if route == 'course_index' %} class="active"{% endif %}><a href="{{ path('course_index') }}">Мои курсы</a></li>
+      <li{% if route == 'course_results' %} class="active"{% endif %}><a href="{{ path('course_results') }}">Результаты курсов</a></li>
+  {% else %}
+      <li><a href="{{ path('course_index') }}">Доступные курсы</a></li>
+  {% endif %}
+  {% if courses|length %}
+      <li class="nav-header">Список курсов</li>
+      
+      {% if route == 'course_show' %}
+          {% set id = app.request.get('id') %}
+      {% else %}
+          {% set id = false %}
+      {% endif %}
+      
+      {% for course in courses %}
+          <li{% if id == course.id %} class="active"{% endif %}><a href="{{ path('course_show', {'id': course.id }) }}">{{ course.title }}</a></li>
+      {% endfor %}
+  {% endif %}
+</ul>

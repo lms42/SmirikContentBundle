@@ -1,28 +1,11 @@
 {% extends '::base.html.twig' %}
 
-{% block body %}
-<div class="container-fluid">
-  <div class="row-fluid">
-    {% block left %}
-    <div class="span3">
-        <div class=" sidebar-nav">
-          {% render "SmirikContentBundle:Content:sidebar" %}
-        </div>
-    </div>
-    {% endblock %}
+{% block header %}{% endblock %}
 
-    <div class="span9">
-      <div class="content">
-        {% block content %}
-        <div class="well">
-            <h1>Информатика 2.0</h1>
-            <p>Пособия, презентации, видео по информатике и информационным технологиям. Ориентировано на школьников и студентов младших курсов, а также интересующихся предметом.</p>
-            <hr>
-            {% include 'SmirikContentBundle:Default:slideshow.html.twig' %}
-        </div>
-        {% endblock %}
-      </div>
-    </div>
-  </div>
+{% block content %}
+<div class="well">
+    <h1>{{ 'mainpage.header'|config('LMS42') }}</h1>
+    <p>{{ 'mainpage.description'|config('LMS42 is cool!')}}</p>
+    <hr>
 </div>
 {% endblock %}
