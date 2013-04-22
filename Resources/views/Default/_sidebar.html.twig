@@ -3,23 +3,35 @@
 <ul class="nav nav-list well">
   <li class="nav-header">{{ 'My courses'|trans }}</li>
   <li{% if route == 'homepage' %} class="active"{% endif %}><a href="{{ path('homepage') }}">{{ 'Homepage'|trans }}</a></li>
-  {% if courses|length %}
+  
+  {% if is_granted('ROLE_USER') %}
       <li{% if route == 'course_index' %} class="active"{% endif %}><a href="{{ path('course_index') }}">{{ 'All courses'|trans }}</a></li>
       <li{% if route == 'course_results' %} class="active"{% endif %}><a href="{{ path('course_results') }}">{{ 'My results'|trans }}</a></li>
-  {% else %}
-      <li><a href="{{ path('course_index') }}">{{ 'Available courses'|trans }}</a></li>
-  {% endif %}
-  {% if courses|length %}
-      <li class="nav-header">{{ 'List of courses'|trans }}</li>
-      
-      {% if route == 'course_show' %}
-          {% set id = app.request.get('id') %}
-      {% else %}
-          {% set id = false %}
+      <li class="divider"></li>
+      {% if courses|length %}
+          <li class="nav-header">{{ 'List of courses'|trans }}</li>
+          {% if route == 'course_show' %}
+              {% set id = app.request.get('id') %}
+          {% else %}
+              {% set id = false %}
+          {% endif %}
+          {% for course in courses %}
+              <li{% if id == course.id %} class="active"{% endif %}><a href="{{ path('course_show', {'id': course.id }) }}">{{ course.title }}</a></li>
+          {% endfor %}
       {% endif %}
-      
-      {% for course in courses %}
-          <li{% if id == course.id %} class="active"{% endif %}><a href="{{ path('course_show', {'id': course.id }) }}">{{ course.title }}</a></li>
-      {% endfor %}
+      <li class="divider"></li>
+      <li><a href="{{ path('course_index') }}">{{ 'All available courses'|trans }}</a></li>
+  {% else %}
+      {% if courses|length %}
+          <li class="nav-header">{{ 'List of courses'|trans }}</li>
+          {% if route == 'course_show' %}
+              {% set id = app.request.get('id') %}
+          {% else %}
+              {% set id = false %}
+          {% endif %}
+          {% for course in courses %}
+              <li{% if id == course.id %} class="active"{% endif %}><a href="{{ path('course_show', {'id': course.id }) }}">{{ course.title }}</a></li>
+          {% endfor %}
+      {% endif %}
   {% endif %}
 </ul>
