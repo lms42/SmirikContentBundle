@@ -49,6 +49,16 @@ columns:
             editable: true
             sortable: true
             filterable: true
+    file:
+        name: file
+        extends: file
+        options:
+            listable:   true
+            editable:   true
+            sortable:   false
+            filterable: false
+            upload_path: /uploads/documents/
+            randomize_name: true
     urlkey:
         label: Urlkey
         name: urlkey

@@ -26,6 +26,7 @@ class ContentController extends Controller
             ->limit(10)
             ->orderByCreatedAt('desc')
             ->find();
+            
         return array(
             'news' => $news,
         );

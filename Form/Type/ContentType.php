@@ -5,11 +5,15 @@ namespace Smirik\ContentBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
+use Smirik\PropelAdminBundle\Form\DataTransformer\FileToTextTransformer;
+
 class ContentType extends AbstractType
 {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $transformer = new FileToTextTransformer();
+        
         $builder
             ->add('category', 'model', array(
                   'class'    => 'Smirik\ContentBundle\Model\Category',
@@ -19,6 +23,8 @@ class ContentType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('text')
+            ->add('file', 'file')
+            ->add($builder->create('file', 'file', array('required' => false))->prependNormTransformer($transformer))
             ->add('urlkey')
             ->add('is_active')
             ->add('weight');
