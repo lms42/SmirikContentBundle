@@ -20,7 +20,7 @@
       "avalanche123/imagine-bundle": "*",
       "smirik/bootstrap-bundle": "*",
       "smirik/propel-admin-bundle": "*",
-      "smirik/admin-bundle": "*",
+      "lms42/admin-bundle": "*",
       "friendsofsymfony/user-bundle": "*",
       "knplabs/knp-menu-bundle": "*",
       "knplabs/knp-menu": "2.0.*"
