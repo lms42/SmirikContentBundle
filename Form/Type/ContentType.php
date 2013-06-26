@@ -9,7 +9,6 @@ use Smirik\PropelAdminBundle\Form\DataTransformer\FileToTextTransformer;
 
 class ContentType extends AbstractType
 {
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $transformer = new FileToTextTransformer();
@@ -22,7 +21,9 @@ class ContentType extends AbstractType
             ))
             ->add('title')
             ->add('description')
-            ->add('text')
+            ->add('text', 'ckeditor', array(
+
+            ))
             ->add('file', 'file')
             ->add($builder->create('file', 'file', array('required' => false))->prependNormTransformer($transformer))
             ->add('urlkey')

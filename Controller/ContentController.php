@@ -21,12 +21,12 @@ class ContentController extends Controller
     {
         $news = ContentQuery::create()
             ->useCategoryQuery()
-            ->filterByUrlkey('news')
+                ->filterByUrlkey('news')
             ->endUse()
             ->limit(10)
             ->orderByCreatedAt('desc')
             ->find();
-            
+
         return array(
             'news' => $news,
         );
@@ -71,7 +71,7 @@ class ContentController extends Controller
         if (is_object($user)) {
             $courses = CourseQuery::create()
                 ->useUserCourseQuery()
-                ->filterByUserId($user->getId())
+                    ->filterByUserId($user->getId())
                 ->endUse()
                 ->find();
         }
