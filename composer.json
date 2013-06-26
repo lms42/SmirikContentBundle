@@ -14,7 +14,7 @@
     ],
     "require": {
       "symfony/framework-bundle": "2.*",
-      "propel/propel-bundle": "1.1.*",
+      "propel/propel-bundle": "1.2.*@dev",
       "willdurand/propel-typehintable-behavior": "*",
       "imagine/Imagine": "*",
       "avalanche123/imagine-bundle": "*",
