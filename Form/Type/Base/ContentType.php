@@ -4,6 +4,7 @@ namespace Smirik\ContentBundle\Form\Type\Base;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ContentType extends AbstractType
 {
@@ -21,10 +22,12 @@ class ContentType extends AbstractType
         ;
     }
 
-    public function getDefaultOptions(array $options)
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        return array(
-            'data_class' => 'Smirik\ContentBundle\Model\Content',
+        $resolver->setDefaults(
+            array(
+                'data_class' => 'Smirik\ContentBundle\Model\Content'
+            )
         );
     }
 

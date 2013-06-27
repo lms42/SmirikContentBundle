@@ -4,7 +4,7 @@ namespace Smirik\ContentBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Smirik\PropelAdminBundle\Form\DataTransformer\FileToTextTransformer;
 
 class ContentType extends AbstractType
@@ -21,20 +21,20 @@ class ContentType extends AbstractType
             ))
             ->add('title')
             ->add('description')
-            ->add('text', 'ckeditor', array(
-
-            ))
+            ->add('text', 'ckeditor')
             ->add('file', 'file')
-            ->add($builder->create('file', 'file', array('required' => false))->prependNormTransformer($transformer))
+            //->add($builder->create('file', 'file', array('required' => false))->prependNormTransformer($transformer))
             ->add('urlkey')
             ->add('is_active')
             ->add('weight');
     }
 
-    public function getDefaultOptions(array $options)
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        return array(
-            'data_class' => 'Smirik\ContentBundle\Model\Content',
+        $resolver->setDefaults(
+            array(
+                'data_class' => 'Smirik\ContentBundle\Model\Content'
+            )
         );
     }
 
