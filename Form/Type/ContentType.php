@@ -23,7 +23,7 @@ class ContentType extends AbstractType
             ->add('description')
             ->add('text', 'ckeditor')
             ->add('file', 'file')
-            //->add($builder->create('file', 'file', array('required' => false))->prependNormTransformer($transformer))
+            ->add($builder->create('file', 'file', array('required' => false))->addModelTransformer($transformer))
             ->add('urlkey')
             ->add('is_active')
             ->add('weight');
