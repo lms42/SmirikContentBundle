@@ -15,7 +15,7 @@ class ContentManager
     {
         return ContentQuery::create()
             ->filterByIsActive(true)
-            ->orderByUpdatedAt()
+            ->orderByCreatedAt('desc')
             ->limit($limit)
             ->find()
         ;

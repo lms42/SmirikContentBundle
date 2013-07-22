@@ -26,5 +26,17 @@ class ContentQuery extends BaseContentQuery {
 			->endUse()
 		;
 	}
+    
+    public function lastNews($limit)
+    {
+        return $this
+            ->useCategoryQuery()
+            ->filterByUrlkey('news')
+            ->endUse()
+            ->limit(10)
+            ->orderByCreatedAt('desc')
+        ;
+    }
+    
 	
 } // ContentQuery
