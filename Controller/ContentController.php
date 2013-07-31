@@ -32,8 +32,9 @@ class ContentController extends Controller
 
     /**
      * @Route("/category/{urlkey}", name="category_show")
+     * @Route("/category/{urlkey}/{page}", name="category_show_paginate")
      */
-    public function categoryAction($urlkey)
+    public function categoryAction($urlkey, $page = 1)
     {
         $category = CategoryQuery::create()->filterByUrlkey($urlkey)->findOne();
 
@@ -41,30 +42,17 @@ class ContentController extends Controller
             throw $this->createNotFoundException('No category found for id '.$id);
         }
 
-        $content = ContentQuery::create()
-            ->filterByCategoryId($category->getId())
-            ->limit(10)
-            ->orderByCreatedAt('desc')
-            ->find();
+        $content = $this->get('content.manager')->category($category)->paginate($page, 15);
+        
+        $response = array(
+            'category' => $category,
+            'content'  => $content,
+        );
 
         if ($category->getMode()) {
-            return $this->render(
-                'SmirikContentBundle:Category:table.html.twig',
-                array(
-                    'category' => $category,
-                    'content' => $content,
-                )
-            );
-        } else {
-            return $this->render(
-                'SmirikContentBundle:Category:show.html.twig',
-                array(
-                    'category' => $category,
-                    'content' => $content,
-                )
-            );
+            return $this->render('SmirikContentBundle:Category:table.html.twig', $response);
         }
-
+        return $this->render('SmirikContentBundle:Category:show.html.twig', $response);
     }
 
 }

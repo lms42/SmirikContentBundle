@@ -8,14 +8,11 @@
   </div>
 </div>
 
-<div class="blog margin-bottom-30">
+<p>
     <h3>{{ item.title }}</h3>
-    <ul class="unstyled inline blog-info">
+    <ul class="unstyled inline">
         <li><i class="icon-calendar"></i> {{ item.createdAt.format('d.m.Y') }}</li>
-        <!--<li><i class="icon-pencil"></i> Diana Anderson</li>
-        <li><i class="icon-comments"></i> <a href="#">24 Comments</a></li>-->
-    </ul>
-    <ul class="unstyled inline blog-tags">
+        {% if item.user %}<li><i class="icon-pencil"></i>{{ item.user.profile.teacherName }}</li>{% endif %}
         <li>
             <i class="icon-tags"></i>
             <a href="#">{{ item.category.title }}</a>
@@ -28,4 +25,4 @@
             {{ 'Read More'|trans }}
         </a>
     </p>
-</div>
+</p>

@@ -20,4 +20,13 @@ class ContentManager
             ->find()
         ;
     }
+    
+    public function category($category)
+    {
+        return ContentQuery::create()
+            ->filterByCategoryId($category->getId())
+            ->orderByCreatedAt('desc')
+        ;
+    }
+    
 }
