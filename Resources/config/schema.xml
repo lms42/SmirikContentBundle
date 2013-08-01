@@ -17,6 +17,7 @@
   </table>
   <table name="content" phpName="Content" idMethod="native">
     <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="user_id" type="integer" required="true"/>
     <column name="category_id" type="INTEGER" required="true"/>
     <column name="title" type="VARCHAR" size="100" required="true"/>
     <column name="description" type="VARCHAR" size="255" required="false"/>
@@ -25,10 +26,16 @@
     <column name="is_active" type="BOOLEAN" size="1" required="false"/>
     <column name="weight" type="INTEGER" required="false"/>
     <column name="file" type="VARCHAR" size="200" required="false"/>
+    <foreign-key foreignTable="fos_user" onDelete="setnull">
+        <reference local="user_id" foreign="id"/>
+    </foreign-key>
     <foreign-key foreignTable="categories">
       <reference local="category_id" foreign="id"/>
     </foreign-key>
     <behavior name="timestampable" />
+    <index>
+        <index-column name="user_id"/>
+    </index>
     <index>
       <index-column name="category_id"/>
     </index>

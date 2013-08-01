@@ -4,3 +4,7 @@ services:
         tags:
             - { name: kernel.event_listener, event: admin.menu_configure, method: onMenuConfigure }
             - { name: kernel.event_listener, event: main.menu_configure, method: onMainMenuConfigure }
+    content.manager:
+        class: Smirik\ContentBundle\Manager\ContentManager
+    category.manager:
+        class: Smirik\ContentBundle\Manager\CategoryManager

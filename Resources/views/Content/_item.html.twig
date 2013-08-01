@@ -1,0 +1,28 @@
+<div class="item hide">
+  <h3><a href="{{ path('content_show', { 'id': item.id }) }}">{{ item.title }}</a></h3>
+  <p>
+    {{ item.description | raw }}
+  </p>
+  <div class="category">
+    создан {{ item.createdAt.format('d.m.Y') }}
+  </div>
+</div>
+
+<p>
+    <h3>{{ item.title }}</h3>
+    <ul class="unstyled inline">
+        <li><i class="icon-calendar"></i> {{ item.createdAt.format('d.m.Y') }}</li>
+        {% if item.user %}<li><i class="icon-pencil"></i>{{ item.user.profile.teacherName }}</li>{% endif %}
+        <li>
+            <i class="icon-tags"></i>
+            <a href="#">{{ item.category.title }}</a>
+        </li>
+    </ul>
+    <!--<div class="blog-img"><img alt="" src="assets/img/posts/1.jpg"></div>-->
+    <p>{{ item.description | raw }}</p>
+    <p>
+        <a href="{{ path('content_show', { 'id': item.id }) }}" class="btn-u btn-u-small" title="{{ item.title }}">
+            {{ 'Read More'|trans }}
+        </a>
+    </p>
+</p>

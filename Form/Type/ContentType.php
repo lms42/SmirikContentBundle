@@ -20,7 +20,7 @@ class ContentType extends AbstractType
                   'required' => false,
             ))
             ->add('title')
-            ->add('description')
+            ->add('description', 'ckeditor')
             ->add('text', 'ckeditor')
             ->add('file', 'file')
             ->add($builder->create('file', 'file', array('required' => false))->addModelTransformer($transformer))
