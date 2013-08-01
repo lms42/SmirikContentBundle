@@ -15,7 +15,7 @@ class ContentController extends Controller
 {
     /**
      * @Route("/show/{id}", name="content_show")
-     * @Template("SmirikContentBundle:Content:show.html.twig", vars={"get"})
+     * @Template("SmirikContentBundle:Content:index.html.twig", vars={"get"})
      */
     public function showAction($id)
     {
@@ -24,9 +24,12 @@ class ContentController extends Controller
         if (!$content) {
             throw $this->createNotFoundException('No content found for id '.$id);
         }
+        
+        $categories = $this->get('category.manager')->main();
 
         return array(
-            'content' => $content,
+            'content'    => $content,
+            'categories' => $categories,
         );
     }
 
@@ -43,16 +46,18 @@ class ContentController extends Controller
         }
 
         $content = $this->get('content.manager')->category($category)->paginate($page, 15);
+        $categories = $this->get('category.manager')->main();
         
         $response = array(
-            'category' => $category,
-            'content'  => $content,
+            'category'   => $category,
+            'categories' => $categories,
+            'content'    => $content,
         );
 
         if ($category->getMode()) {
-            return $this->render('SmirikContentBundle:Category:table.html.twig', $response);
+            return $this->render('SmirikContentBundle:Category:index_table.html.twig', $response);
         }
-        return $this->render('SmirikContentBundle:Category:show.html.twig', $response);
+        return $this->render('SmirikContentBundle:Category:index.html.twig', $response);
     }
 
 }

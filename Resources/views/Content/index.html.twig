@@ -1,9 +1,19 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}{{content.title}} / {{ content.category.title }} / Информатика 2.0{% endblock %}
+{% block title %}{{content.title}} / {{ content.category.title }}{% endblock %}
 
 {% block header %}
-    {{ content.title }} <small>{{ content.category.title }}</small>
+    {{ content.title }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    {% include "SmirikCoreBundle:Menu:breadcrumbs.html.twig" with {
+        items: [
+            {},
+            {label: content.category.title, uri: path("category_show", {'urlkey': content.category.urlkey } )},
+            {label: content.title, uri: "#"},
+        ]}
+    %}
 {% endblock %}
 
 {% block content %}
