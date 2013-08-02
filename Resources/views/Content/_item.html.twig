@@ -1,5 +1,5 @@
 <div class="item hide">
-  <h3><a href="{{ path('content_show', { 'id': item.id }) }}">{{ item.title }}</a></h3>
+  <h3><a href="{{ path('content_index', { 'id': item.id }) }}">{{ item.title }}</a></h3>
   <p>
     {{ item.description | raw }}
   </p>
@@ -21,7 +21,7 @@
     <!--<div class="blog-img"><img alt="" src="assets/img/posts/1.jpg"></div>-->
     <p>{{ item.description | raw }}</p>
     <p>
-        <a href="{{ path('content_show', { 'id': item.id }) }}" class="btn-u btn-u-small" title="{{ item.title }}">
+        <a href="{{ path('content_index', { 'id': item.id }) }}" class="btn-u btn-u-small" title="{{ item.title }}">
             {{ 'Read More'|trans }}
         </a>
     </p>

@@ -17,7 +17,7 @@
     {% for item in content %}
       <tr>
         <td>{{ loop.index }}</td>
-        <td><a href="{{ path('content_show', { 'id': item.id }) }}">{{ item.title }}</a></td>
+        <td><a href="{{ path('content_index', { 'id': item.id }) }}">{{ item.title }}</a></td>
         <td>{{ item.description }}</td>
         <td>
           {% if (item.file|length > 0) and not(item.hasImage)  %}

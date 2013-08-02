@@ -27,7 +27,7 @@ class ConfigureMenuListener
         $categories = CategoryQuery::create()->filterByNavigation(true)->find();
         foreach ($categories as $category)
         {
-            $menu->addChild($category->getTitle(), array('route' => 'category_show', 'routeParameters' => array('urlkey' => $category->getUrlkey())));
+            $menu->addChild($category->getTitle(), array('route' => 'category_index', 'routeParameters' => array('urlkey' => $category->getUrlkey())));
         }
     }
 
