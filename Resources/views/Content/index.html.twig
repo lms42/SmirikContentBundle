@@ -25,7 +25,7 @@
                 
                 <div class="entry-meta">
                     <span class="entry-type"></span>
-                    <span class="entry-date">{{ content.createdAt|ago }}</span>
+                    <span class="entry-date">{{ time_diff(content.createdAt) }}</span>
                 </div>
                 
                 <div class="entry-content">
