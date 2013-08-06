@@ -27,6 +27,16 @@ class ContentQuery extends BaseContentQuery {
 		;
 	}
     
+    public function filterByCategory($category, $comparison = null)
+    {
+        return $this
+            ->useCategoryQuery()
+                ->filterByTitle($category, $comparison)
+            ->endUse()
+        ;
+    }
+    
+    
     public function lastNews($limit)
     {
         return $this
