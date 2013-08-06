@@ -29,7 +29,7 @@ class CategoryController extends Controller
 
         $content = $this->get('content.manager')->category($category)->paginate($page, 15);
         $categories = $this->get('category.manager')->main();
-        
+
         $response = array(
             'category'   => $category,
             'categories' => $categories,

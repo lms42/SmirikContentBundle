@@ -7,32 +7,32 @@
 {% endblock %}
 
 {% block breadcrumbs %}
-    {% include "SmirikCoreBundle:Menu:breadcrumbs.html.twig" with {
-        items: [
-            {},
-            {label: content.category.title, uri: path("category_index", {'urlkey': content.category.urlkey } )},
-            {label: content.title, uri: "#"},
-        ]}
-    %}
+        <ul class="pull-right" id="breadcrumbs">
+            <li>
+                <a href="{{ path("homepage") }}" title="dashboard">Главная</a>
+                <span class="divider">/</span>
+            </li>
+            <li>{{ category.title }}</li>
+        </ul>
 {% endblock %}
 
 {% block content %}
 
     <div class="row-fluid">
         <div class="span8">
-            
+
             <article class="post single-post image-post">
-                
+
                 <div class="entry-meta">
                     <span class="entry-type"></span>
                     <span class="entry-date">{{ time_diff(content.createdAt) }}</span>
                 </div>
-                
+
                 <div class="entry-content">
                     <blockquote>
                         {{ content.description | raw }}
                     </blockquote>
-            
+
                     <p>
                         {{ content.text | raw }}
                     </p>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="clr"></div>
             </article>
-            
+
         </div>
     	<div class="sidebar span4">
     		<!-- Tags / categories -->
@@ -54,5 +54,5 @@
     		</div>
     	</div><!-- end sidebar -->
     </div>
-  
+
 {% endblock %}
