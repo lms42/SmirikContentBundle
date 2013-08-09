@@ -49,20 +49,10 @@ columns:
             editable: true
             sortable: true
             filterable: true
-    is_active:
-        label: Is_active
-        name: is_active
-        type: boolean
-        builder: simple
-        options:
-            listable: true
-            editable: true
-            sortable: true
-            filterable: true
 actions:
     is_active:
-        route:   admin_categories_enable
-        extends: is_active
+        route:   admin_categories_publish
+        extends: publish
     create:
         route: admin_categories_new
         extends: create

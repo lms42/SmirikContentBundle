@@ -6,7 +6,6 @@
     <column name="title" type="VARCHAR" size="100" required="true"/>
     <column name="url" type="VARCHAR" size="200" required="false"/>
     <column name="navigation" type="BOOLEAN" size="1" required="false"/>
-    <column name="is_active" type="BOOLEAN" size="1" required="false"/>
     <column name="mode" type="BOOLEAN" size="1" required="false"/>
     <foreign-key foreignTable="categories">
       <reference local="pid" foreign="id"/>
@@ -14,6 +13,12 @@
     <index>
       <index-column name="pid"/>
     </index>
+    <behavior name="publishable">
+        <parameter name="is_published_column" value="is_active" />
+        <parameter name="published_by_default" value="false" />
+        <!-- timeframe support -->
+        <parameter name="with_timeframe" value="false" />
+    </behavior>
   </table>
   <table name="content" phpName="Content" idMethod="native">
     <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
@@ -23,9 +28,14 @@
     <column name="description" type="VARCHAR" size="255" required="false"/>
     <column name="text" type="CLOB" required="true"/>
     <column name="urlkey" type="VARCHAR" size="50" required="false"/>
-    <column name="is_active" type="BOOLEAN" size="1" required="false"/>
     <column name="weight" type="INTEGER" required="false"/>
     <column name="file" type="VARCHAR" size="200" required="false"/>
+    <behavior name="publishable">
+        <parameter name="is_published_column" value="is_active" />
+        <parameter name="published_by_default" value="false" />
+        <!-- timeframe support -->
+        <parameter name="with_timeframe" value="false" />
+    </behavior>
     <foreign-key foreignTable="fos_user" onDelete="setnull">
         <reference local="user_id" foreign="id"/>
     </foreign-key>

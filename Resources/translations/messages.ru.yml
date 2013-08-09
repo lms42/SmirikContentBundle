@@ -1,5 +1,5 @@
 parent: Родитель
-Navigation: В навигации
+Navigation: Навигация
 Category: Категория
 content: контент
 category: категория
@@ -14,7 +14,7 @@ admin.content.menu:  Контент
 admin.category.table.header.id:         N
 admin.category.table.header.pid:        Родитель
 admin.category.table.header.title:      Название
-admin.category.table.header.navigation: В навигации
+admin.category.table.header.navigation: В&nbsp;навигации
 admin.category.table.header.isactive:   Активна
 admin.category.actions: Действия
 

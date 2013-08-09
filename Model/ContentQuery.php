@@ -36,7 +36,6 @@ class ContentQuery extends BaseContentQuery {
         ;
     }
     
-    
     public function lastNews($limit)
     {
         return $this

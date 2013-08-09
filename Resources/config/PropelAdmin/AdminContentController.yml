@@ -75,7 +75,7 @@ columns:
         type: boolean
         builder: simple
         options:
-            listable: true
+            listable: false
             editable: true
             sortable: true
             filterable: true
@@ -91,8 +91,8 @@ columns:
             filterable: true
 actions:
     is_active:
-        route:   admin_content_enable
-        extends: is_active
+        route:   admin_content_publish
+        extends: publish
     create:
         route: admin_content_new
         extends: create
