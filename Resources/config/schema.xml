@@ -16,6 +16,7 @@
     <behavior name="publishable">
         <parameter name="is_published_column" value="is_active" />
         <parameter name="published_by_default" value="false" />
+        <parameter name="include_unpublished" value="true" />
         <!-- timeframe support -->
         <parameter name="with_timeframe" value="false" />
     </behavior>
@@ -33,6 +34,7 @@
     <behavior name="publishable">
         <parameter name="is_published_column" value="is_active" />
         <parameter name="published_by_default" value="false" />
+        <parameter name="include_unpublished" value="true" />
         <!-- timeframe support -->
         <parameter name="with_timeframe" value="false" />
     </behavior>
