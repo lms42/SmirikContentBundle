@@ -93,9 +93,9 @@ actions:
     is_active:
         route:   admin_content_publish
         extends: publish
-    create:
+    new:
         route: admin_content_new
-        extends: create
+        extends: new
     edit:
         route: admin_content_edit
         extends: edit

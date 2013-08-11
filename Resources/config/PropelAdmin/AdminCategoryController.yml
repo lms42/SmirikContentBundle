@@ -53,9 +53,9 @@ actions:
     is_active:
         route:   admin_categories_publish
         extends: publish
-    create:
+    new:
         route: admin_categories_new
-        extends: create
+        extends: new
     edit:
         route: admin_categories_edit
         extends: edit
