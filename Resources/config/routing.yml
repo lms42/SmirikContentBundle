@@ -1,37 +1,3 @@
-admin_categories_index:
-  pattern: /categories
-  defaults: { _controller: SmirikContentBundle:AdminCategory:index, page: 1 }
-
-admin_main:
-  pattern: /categories
-  defaults: { _controller: SmirikContentBundle:AdminCategory:index, page: 1 }
-
-admin_categories_enable:
-  pattern: /categories/enable
-  defaults: { _controller: SmirikContentBundle:AdminCategory:enable }
-
-admin_categories_list:
-  pattern: /categories/{page}
-  defaults: { _controller: SmirikContentBundle:AdminCategory:index, page: 1 }
-  requirements:
-    page:   \d+
-
-admin_categories_edit:
-  pattern: /categories/{id}/edit
-  defaults: { _controller: SmirikContentBundle:AdminCategory:edit }
-  requirements:
-    id:   \d+
-
-admin_categories_delete:
-  pattern: /categories/{id}/delete
-  defaults: { _controller: SmirikContentBundle:AdminCategory:delete }
-  requirements:
-    id:   \d+
-
-admin_categories_new:
-  pattern: /categories/new
-  defaults: { _controller: SmirikContentBundle:AdminCategory:new }
-
 admin_content_index:
   pattern: /content
   defaults: { _controller: SmirikContentBundle:AdminContent:index, page: 1 }
@@ -58,6 +24,44 @@ admin_content_new:
   pattern: /content/new
   defaults: { _controller: SmirikContentBundle:AdminContent:new }
 
-admin_content_enable:
-  pattern: /content/enable
-  defaults: { _controller: SmirikContentBundle:AdminContent:enable }
+admin_content_publish:
+  pattern: /content/publish
+  defaults: { _controller: SmirikContentBundle:AdminContent:publish }
+
+admin_categories_index:
+    pattern: /categories
+    defaults: { _controller: SmirikContentBundle:AdminCategory:index, page: 1 }
+
+admin_categories_list:
+    pattern: /categories/{page}
+    defaults: { _controller: SmirikContentBundle:AdminCategory:index, page: 1 }
+    requirements:
+        page:   \d+
+
+admin_categories_edit:
+    pattern: /categories/{id}/edit
+    defaults: { _controller: SmirikContentBundle:AdminCategory:edit }
+    requirements:
+        id:   \d+
+
+admin_categories_delete:
+    pattern: /categories/{id}/delete
+    defaults: { _controller: SmirikContentBundle:AdminCategory:delete }
+    requirements:
+        id:   \d+
+
+admin_categories_new:
+    pattern: /categories/new
+    defaults: { _controller: SmirikContentBundle:AdminCategory:new }
+
+admin_categories_chain:
+    pattern: /categories/chain
+    defaults: { _controller: SmirikContentBundle:AdminCategory:chain }
+
+admin_categories_publish:
+    pattern: /categories/publish
+    defaults: { _controller: SmirikContentBundle:AdminCategory:publish }
+
+admin_main:
+  pattern: /categories
+  defaults: { _controller: SmirikContentBundle:AdminCategory:index, page: 1 }
