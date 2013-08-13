@@ -7,43 +7,52 @@
 {% endblock %}
 
 {% block breadcrumbs %}
-    {% include "SmirikCoreBundle:Menu:breadcrumbs.html.twig" with {
-        items: [
-            {},
-            {label: content.category.title, uri: path("category_show", {'urlkey': content.category.urlkey } )},
-            {label: content.title, uri: "#"},
-        ]}
-    %}
+        <ul class="pull-right" id="breadcrumbs">
+            <li>
+                <a href="{{ path("homepage") }}" title="dashboard">Главная</a>
+                <span class="divider">/</span>
+            </li>
+            <li>{{ category.title }}</li>
+        </ul>
 {% endblock %}
 
 {% block content %}
 
-  <div class="item-image">
-    {% if content.hasImage %}
-      <img src="{{ asset('uploads/pages/' ~ content.file) }}" width="200" class="thumb">
-    {% endif %}
-  </div>
+    <div class="row-fluid">
+        <div class="span8">
 
-  <div class="description">
-    {{ content.description | raw }}
-  </div>
-  <p>
-    {{ content.text | raw }}
-  </p>
-  
-  {% if (content.file|length > 0) and not(content.hasImage)  %}
-  <p>
-    <a href="{{ asset('uploads/pages/' ~ content.file) }}" title="{{ content.title }}">Скачать презентацию {{ content.title }}</a>
-  </p>
-  {% endif %}
-  
-  <div class="category">
-    создан {{ content.createdAt.format('d.m.Y') }}
-  </div>
-  
-  <div id="vk_comments"></div>
-  <script type="text/javascript">
-  VK.Widgets.Comments("vk_comments", {limit: 15});
-  </script>
-  
+            <article class="post single-post image-post">
+
+                <div class="entry-meta">
+                    <span class="entry-type"></span>
+                    <span class="entry-date">{{ time_diff(content.createdAt) }}</span>
+                </div>
+
+                <div class="entry-content">
+                    <blockquote>
+                        {{ content.description | raw }}
+                    </blockquote>
+
+                    <p>
+                        {{ content.text | raw }}
+                    </p>
+
+                    {% if (content.file|length > 0) and not(content.hasImage)  %}
+                        <p>
+                            <a href="{{ asset('uploads/pages/' ~ content.file) }}" title="{{ content.title }}">{{ 'Download'|trans }} {{ content.title }}</a>
+                        </p>
+                    {% endif %}
+                </div>
+                <div class="clr"></div>
+            </article>
+
+        </div>
+    	<div class="sidebar span4">
+    		<!-- Tags / categories -->
+    		<div class="widget">
+                {% include 'SmirikContentBundle:Category:_list.html.twig' with {'categories': categories } %}
+    		</div>
+    	</div><!-- end sidebar -->
+    </div>
+
 {% endblock %}
