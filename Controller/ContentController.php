@@ -23,7 +23,7 @@ class ContentController extends Controller
     public function indexAction($id)
     {
         $content = ContentQuery::create()->findPk($id);
-
+        
         if (!$content) {
             throw $this->createNotFoundException('No content found for id '.$id);
         }

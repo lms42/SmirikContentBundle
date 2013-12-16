@@ -7,13 +7,13 @@
 {% endblock %}
 
 {% block breadcrumbs %}
-        <ul class="pull-right" id="breadcrumbs">
-            <li>
-                <a href="{{ path("homepage") }}" title="dashboard">Главная</a>
-                <span class="divider">/</span>
-            </li>
-            <li>{{ category.title }}</li>
-        </ul>
+    {% include "SmirikCoreBundle:Menu:breadcrumbs.html.twig" with {
+        items: [
+            {},
+            {label: content.category.title, uri: path("category_index", {urlkey: content.category.urlkey})},
+            {label: content.title, uri: "#"},
+        ]}
+    %}
 {% endblock %}
 
 {% block content %}
